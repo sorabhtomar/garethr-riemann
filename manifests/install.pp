@@ -15,12 +15,6 @@ class riemann::install {
     default: {}
   }
 
-  wget::fetch { 'download_riemann':
-    source      => "http://aphyr.com/riemann/riemann-${riemann::version}.tar.bz2",
-    destination => "/usr/local/src/riemann-${riemann::version}.tar.bz2",
-    before      => Exec['untar_riemann'],
-  }
-
   file { '/opt/riemann':
     ensure  => link,
     target  => "/opt/riemann-${riemann::version}",
@@ -38,12 +32,12 @@ class riemann::install {
     require => User[$riemann::user],
   }
 
-  exec { 'untar_riemann':
-    command => "/bin/tar --bzip2 -xvf /usr/local/src/riemann-${riemann::version}.tar.bz2",
-    cwd     => '/opt',
-    creates => "/opt/riemann-${riemann::version}/bin/riemann",
-    before  => File['/opt/riemann'],
-    user    => $riemann::user,
+  riemann::download { 'download_riemann':
+    provider => git,
+    source => 'https://github.com/udacity/garethr-riemann.git',
+    revision => '58b78acc995ab9598ec567061806e5c9661b8fc8',
+    user => $riemann::user,
+    before => File['/opt/riemann'],
     require => File["/opt/riemann-${riemann::version}"],
   }
 
