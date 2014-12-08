@@ -35,7 +35,7 @@ class riemann::install {
   riemann::download { 'download_riemann':
     provider => git,
     source => 'https://github.com/udacity/garethr-riemann.git',
-    revision => '58b78acc995ab9598ec567061806e5c9661b8fc8',
+    revision => '1ba59a5ea21d24702c8bbad07013486fe31903cc',
     user => $riemann::user,
     before => File['/opt/riemann'],
     require => File["/opt/riemann-${riemann::version}"],

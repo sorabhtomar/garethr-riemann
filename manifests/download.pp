@@ -15,6 +15,7 @@ class riemann::download (
         provider => $provider,
         source => $source,
         revision => $revision,
+        before => Exec['untar_riemann'],
       }
     }
     default: {
