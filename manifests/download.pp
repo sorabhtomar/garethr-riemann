@@ -5,8 +5,8 @@ class riemann::download (
   $user => undef,
   $destination => "/usr/local/src/riemann-${riemann::version}.tar.bz2",
 ){
-  include vcsrepo
-  include wget
+  # include vcsrepo
+  # include wget
 
   # case $provider {
   #   git, hg, cvs, p4: {

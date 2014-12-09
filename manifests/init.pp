@@ -31,6 +31,7 @@ class riemann(
   validate_absolute_path($config_file)
   validate_string($version, $host, $port)
 
+  class { 'riemann::download': } ->
   class { 'riemann::install': } ->
   class { 'riemann::config': } ~>
   class { 'riemann::service': } ->
