@@ -1,9 +1,9 @@
 class riemann::download (
-  $provider => undef,
-  $source => undef,
-  $revision => undef,
-  $user => undef,
-  $destination => "/usr/local/src/riemann-${riemann::version}.tar.bz2",
+  $provider = undef,
+  $source = undef,
+  $revision = undef,
+  $user = undef,
+  $destination = "/usr/local/src/riemann-${riemann::version}.tar.bz2",
 ){
   # include vcsrepo
   # include wget
